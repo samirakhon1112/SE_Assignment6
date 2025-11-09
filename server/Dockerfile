@@ -1,17 +1,19 @@
-# server/Dockerfile
-FROM node:18-alpine
+# Use Node 22 base image
+FROM node:22
 
-WORKDIR /usr/src/app
+# Set working directory
+WORKDIR /app
 
+# Copy package.json and package-lock.json
 COPY package*.json ./
-RUN npm install --production
+
+# Install dependencies
+RUN npm install
 
 COPY . .
 
+# port
 EXPOSE 3000
 
-# Healthcheck to help local debugging (container-level)
-HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
-  CMD wget -q --spider http://localhost:3000/health || exit 1
-
+#Start server
 CMD ["node", "index.js"]

@@ -1,11 +1,10 @@
-# client/Dockerfile
-FROM node:18-alpine
+FROM node:22
 
-WORKDIR /usr/src/client
+WORKDIR /app
 
 COPY package*.json ./
-RUN npm install --production
+RUN npm install
 
 COPY . .
 
-CMD ["node", "client.js"]
+CMD ["node", "clinet.js"]

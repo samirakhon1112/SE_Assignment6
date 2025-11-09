@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const app = express();
 app.use(bodyParser.json());
 
-let transcripts = []; // in-memory store
+let transcripts = []; 
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 

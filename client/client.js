@@ -13,7 +13,7 @@ async function waitForServer() {
         return true;
       }
     } catch (e) {
-      // ignore, retry
+      //
     }
     console.log(`Waiting for server... (${i + 1}/${MAX_RETRIES})`);
     await new Promise(r => setTimeout(r, RETRY_DELAY_MS));
@@ -24,7 +24,6 @@ async function waitForServer() {
 async function runClientActions() {
   await waitForServer();
 
-  // POST a sample transcript
   const postResp = await fetch(`${SERVER_URL}/transcripts`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -37,7 +36,6 @@ async function runClientActions() {
   const created = await postResp.json();
   console.log('Created transcript:', created);
 
-  // GET transcripts
   const getResp = await fetch(`${SERVER_URL}/transcripts`);
   const items = await getResp.json();
   console.log('All transcripts:', items);

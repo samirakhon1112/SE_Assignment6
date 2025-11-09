@@ -63,7 +63,7 @@ const App: React.FC = () => {
       <Navbar />
       <div className="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-xl p-6">
         <h1 className="text-2xl font-bold mb-4 text-center text-primary">
-          ✅ To-Do List
+           To-Do List
         </h1>
 
         <div className="flex gap-2 mb-4">

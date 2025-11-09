@@ -12,7 +12,6 @@ const TodoList: React.FC = () => {
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
   const [editedText, setEditedText] = useState("");
 
-  // Add task
   const addTask = () => {
     if (newTask.trim() === "") return;
     const newItem: Task = {
@@ -24,18 +23,15 @@ const TodoList: React.FC = () => {
     setNewTask("");
   };
 
-  // Delete task
   const deleteTask = (id: number) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  // Edit task
   const editTask = (id: number, text: string) => {
     setEditingTaskId(id);
     setEditedText(text);
   };
 
-  // Save edited task
   const saveEditedTask = (id: number) => {
     setTasks(
       tasks.map((task) =>
