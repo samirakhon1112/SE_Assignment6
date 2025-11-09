@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  transcript-server:
+    build: ./server
+    container_name: transcript-server
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  transcript-client:
+    build: ./client
+    container_name: transcript-client
+    depends_on:
+      - transcript-server
+    environment:
+      - SERVER_URL=http://transcript-server:3000
+    # client is a one-shot job; it will run, then exit (status 0 if success)
+    restart: "no"
